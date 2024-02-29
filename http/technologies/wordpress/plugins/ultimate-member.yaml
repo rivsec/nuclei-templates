@@ -1,0 +1,26 @@
+id: wordpress-plugins-ultimate-member
+
+info:
+  name: WordPress Plugin Ultimate Member
+  author: ChrisDale
+  severity: info
+  description: Searches the ultimate-member plugin.
+  tags: wordpress,plugin
+
+http:
+  - method: GET
+    path:
+      - "{{BaseURL}}/wp-content/plugins/ultimate-member/readme.txt"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        part: body
+        words:
+          - 'Author URI'
+          - 'Plugin URI'
+        condition: and
+
+      - type: status
+        status:
+          - 200
